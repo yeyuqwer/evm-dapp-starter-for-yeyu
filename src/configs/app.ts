@@ -1,4 +1,19 @@
-export const appName = 'Evm Dapp Starter'
+import { z } from 'zod'
 
-// TODO: id
-export const walletConnectProjectId = '83333dd2a970d5644e1318f9370b15a1'
+const appConfigSchema = z.object({
+  appName: z.string().trim().min(1),
+  walletConnectProjectId: z
+    .string()
+    .trim()
+    .regex(/^[0-9a-f]{32}$/i),
+})
+
+export const appConfig = appConfigSchema.parse({
+  appName: process.env.NEXT_PUBLIC_APP_NAME,
+  walletConnectProjectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
+})
+
+export const appName = appConfig.appName
+export const walletConnectProjectId = appConfig.walletConnectProjectId
+
+export type AppConfig = z.infer<typeof appConfigSchema>

@@ -1,7 +1,6 @@
 import type { Chain } from 'viem'
-import { produce } from 'immer'
 import { arbitrum, arbitrumSepolia, mainnet, sepolia } from 'viem/chains'
-import { Environment, environment } from './environments'
+import { type Environment, env } from './env'
 
 export enum ChainId {
   Mainnet = 1,
@@ -10,18 +9,16 @@ export enum ChainId {
   ArbitrumSepolia = 421614,
 }
 
-export const supportedChainIds = {
-  [Environment.Production]: [ChainId.Mainnet, ChainId.Arbitrum],
-  [Environment.Development]: [ChainId.Sepolia, ChainId.ArbitrumSepolia],
-}[environment]
+const supportedChainIdsByEnvironment: Record<Environment, [ChainId, ChainId]> = {
+  production: [ChainId.Mainnet, ChainId.Arbitrum],
+  development: [ChainId.Sepolia, ChainId.ArbitrumSepolia],
+}
+
+export const supportedChainIds = supportedChainIdsByEnvironment[env.environment]
 
 export const chains: Record<ChainId, Chain> = {
-  [ChainId.Mainnet]: produce(mainnet, chain => {
-    ;(chain.rpcUrls.default.http[0] as string) = 'https://ethereum-rpc.publicnode.com'
-  }),
+  [ChainId.Mainnet]: mainnet,
   [ChainId.Arbitrum]: arbitrum,
-  [ChainId.Sepolia]: produce(sepolia, chain => {
-    ;(chain.rpcUrls.default.http[0] as string) = 'https://ethereum-sepolia-rpc.publicnode.com'
-  }),
+  [ChainId.Sepolia]: sepolia,
   [ChainId.ArbitrumSepolia]: arbitrumSepolia,
 }
