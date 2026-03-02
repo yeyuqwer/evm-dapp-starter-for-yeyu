@@ -1,5 +1,5 @@
 import { atom } from 'jotai'
-import { convertMaybeEvmError } from '../utils/wagmi'
+import { convertMaybeEvmError } from '../common/web3/wagmi'
 
 const lastErrorBaseAtom = atom<Error | null>(null)
 

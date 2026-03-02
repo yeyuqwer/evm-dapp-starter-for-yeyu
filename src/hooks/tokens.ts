@@ -1,14 +1,17 @@
 import type { SkipToken } from '@tanstack/react-query'
-import type {
-  GetBalanceParams,
-  GetDecimalsParams,
-  GetSymbolParams,
-  TransferParams,
-} from '../apis/tokens'
 import { skipToken, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { waitForTransactionReceipt } from '@wagmi/core'
-import { getBalance, getDecimals, getSymbol, transfer } from '../apis/tokens'
-import { wagmiConfig } from '../utils/wagmi'
+import {
+  type GetBalanceParams,
+  type GetDecimalsParams,
+  type GetSymbolParams,
+  getBalance,
+  getDecimals,
+  getSymbol,
+  type TransferParams,
+  transfer,
+} from '@/api/tokens'
+import { wagmiConfig } from '@/lib/common/web3/wagmi'
 
 export function useDecimals(params: GetDecimalsParams | SkipToken) {
   return useQuery({

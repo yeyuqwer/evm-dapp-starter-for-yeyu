@@ -1,6 +1,7 @@
-import { withResponse } from '@/lib/utils/next'
+import type { ServerRuntime } from 'next'
+import { withResponse } from '@/lib/http/next'
 
-export const runtime = 'edge'
+export const runtime: ServerRuntime = 'edge'
 
 export const GET = withResponse(() => {
   return Date.now()

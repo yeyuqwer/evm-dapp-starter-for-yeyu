@@ -4,9 +4,9 @@ import type { ComponentProps, FC } from 'react'
 import { switchChain } from '@wagmi/core'
 import { useAtomValue } from 'jotai'
 import { chains, supportedChainIds } from '@/configs/chains'
+import { wagmiConfig } from '@/lib/common/web3/wagmi'
 import { chainIdAtom, connectorChainIdAtom } from '@/lib/states/evm'
 import { cn } from '@/lib/utils/shadcn'
-import { wagmiConfig } from '@/lib/utils/wagmi'
 import { Button } from '@/ui/shadcn/button'
 import {
   DropdownMenu,

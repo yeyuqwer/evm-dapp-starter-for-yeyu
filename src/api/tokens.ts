@@ -8,8 +8,8 @@ import {
 } from '@wagmi/core'
 import { type Address, erc20Abi, type Hash } from 'viem'
 import { chains } from '@/configs/chains'
-import { amountToRawAmount, rawAmountToAmount } from '../utils/misc'
-import { wagmiConfig } from '../utils/wagmi'
+import { wagmiConfig } from '@/lib/common/web3/wagmi'
+import { amountToRawAmount, rawAmountToAmount } from '@/lib/utils/formatter'
 
 export type GetDecimalsParams = {
   chainId: ChainId

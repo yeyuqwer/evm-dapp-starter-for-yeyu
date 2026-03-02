@@ -2,7 +2,7 @@ import type { GetAccountReturnType } from '@wagmi/core'
 import { getAccount, getChainId, watchAccount, watchChainId } from '@wagmi/core'
 import { atom } from 'jotai'
 import { supportedChainIds } from '@/configs/chains'
-import { wagmiConfig } from '../utils/wagmi'
+import { wagmiConfig } from '../common/web3/wagmi'
 
 const getAccountResultAtom = atom<GetAccountReturnType | null>(null)
 
