@@ -1,6 +1,7 @@
 import type { Chain } from 'viem'
+import type { Environment } from '../schema'
 import { arbitrum, arbitrumSepolia, mainnet, sepolia } from 'viem/chains'
-import { type Environment, env } from './env'
+import { env } from './env'
 
 export enum ChainId {
   Mainnet = 1,

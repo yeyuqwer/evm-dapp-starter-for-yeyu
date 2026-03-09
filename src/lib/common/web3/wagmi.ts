@@ -7,8 +7,8 @@ import {
   BaseError as ViemBaseError,
   UserRejectedRequestError as ViemUserRejectedRequestError,
 } from 'viem'
-import { appName, walletConnectProjectId } from '@/configs/app'
-import { chains, supportedChainIds } from '@/configs/chains'
+import { appName, walletConnectProjectId } from '@/configs/shared/app'
+import { chains, supportedChainIds } from '@/configs/shared/chains'
 import { UnknownEvmError, UserRejectedRequestError } from '../errors/evm'
 
 export const wagmiConfig = createConfig({

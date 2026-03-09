@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from 'react'
 import { switchChain } from '@wagmi/core'
 import { useAtomValue } from 'jotai'
-import { chains, supportedChainIds } from '@/configs/chains'
+import { chains, supportedChainIds } from '@/configs/shared/chains'
 import { wagmiConfig } from '@/lib/common/web3/wagmi'
 import { chainIdAtom, connectorChainIdAtom } from '@/lib/states/evm'
 import { cn } from '@/lib/utils/shadcn'

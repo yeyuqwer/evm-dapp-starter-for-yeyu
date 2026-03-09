@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { appConfig } from '@/configs/app'
-import { env } from '@/configs/env'
+import { appConfig } from '@/configs/shared/app'
+import { env } from '@/configs/shared/env'
 import { ServerConfig } from '@/ui/(home)/server-config'
 
 export default function Page() {
