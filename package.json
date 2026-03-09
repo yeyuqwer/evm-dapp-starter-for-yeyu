@@ -11,7 +11,8 @@
     "test": "vitest run",
     "prepare": "husky",
     "commit": "git-cz",
-    "qwer": "git-cz"
+    "qwer": "git-cz",
+    "cleanup": "node scripts/remove-examples.mjs"
   },
   "dependencies": {
     "@cfx-kit/wallet-avatar": "^0.0.5",
