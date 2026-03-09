@@ -84,6 +84,7 @@ describe('formatNumber', () => {
     expect(formatNumber(1, { defaultText: 'NaN' })).toBe('1')
     expect(formatNumber(NaN, { defaultText: 'NaN' })).toBe('NaN')
     expect(formatNumber('', { defaultText: 'NaN' })).toBe('NaN')
+    expect(formatNumber('abc', { defaultText: 'NaN' })).toBe('NaN')
     expect(formatNumber(null, { defaultText: 'NaN' })).toBe('NaN')
     expect(formatNumber(undefined, { defaultText: 'NaN' })).toBe('NaN')
   })

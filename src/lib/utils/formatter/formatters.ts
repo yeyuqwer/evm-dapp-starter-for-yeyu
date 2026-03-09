@@ -47,7 +47,14 @@ export function formatNumber(
   if (number == null) {
     return defaultText
   }
-  let bn = new BigNumber(number)
+
+  let bn: BigNumber
+  try {
+    bn = new BigNumber(number)
+  } catch {
+    return defaultText
+  }
+
   if (bn.isNaN()) {
     return defaultText
   }
