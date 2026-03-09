@@ -3,21 +3,20 @@
 import type { ComponentProps, FC } from 'react'
 import type { ChainId } from '@/configs/shared/chains'
 import { skipToken } from '@tanstack/react-query'
-import { useAtomValue } from 'jotai'
 import { useEffect, useState } from 'react'
 import { isAddress } from 'viem'
 import { chains } from '@/configs/shared/chains'
 import { useBalance, useDecimals, useSymbol, useTransfer } from '@/hooks/tokens'
-import { accountAtom, chainIdAtom } from '@/lib/states/evm'
+import { useEvmStore } from '@/lib/common/web3/evm-store'
 import { formatNumber } from '@/lib/utils/formatter/formatters'
 import { cn } from '@/lib/utils/shadcn'
 import { Button } from '@/ui/shadcn/button'
 import { Input } from '@/ui/shadcn/input'
 
 export const Transfer: FC<ComponentProps<'div'>> = ({ className, ...props }) => {
-  const chainId = useAtomValue(chainIdAtom)
+  const chainId = useEvmStore(state => state.chainId)
 
-  const account = useAtomValue(accountAtom)
+  const account = useEvmStore(state => state.connectorAccount)
 
   const [tokenChainId, setTokenChainId] = useState<ChainId | null>(null)
 

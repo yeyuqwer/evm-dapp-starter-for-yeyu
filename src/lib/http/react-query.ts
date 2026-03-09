@@ -1,7 +1,6 @@
 import { QueryCache, QueryClient } from '@tanstack/react-query'
 import { stringify } from 'viem'
-import { lastErrorAtom } from '../states/errors'
-import { store } from '../states/jotai'
+import { errorStore } from '../common/errors/error-store'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,7 +12,7 @@ export const queryClient = new QueryClient({
   },
   queryCache: new QueryCache({
     onError: error => {
-      store.set(lastErrorAtom, error)
+      errorStore.getState().setLastError(error instanceof Error ? error : new Error(String(error)))
     },
   }),
 })

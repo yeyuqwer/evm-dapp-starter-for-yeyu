@@ -2,10 +2,9 @@
 
 import type { ComponentProps, FC } from 'react'
 import { switchChain } from '@wagmi/core'
-import { useAtomValue } from 'jotai'
 import { chains, supportedChainIds } from '@/configs/shared/chains'
+import { useEvmStore } from '@/lib/common/web3/evm-store'
 import { wagmiConfig } from '@/lib/common/web3/wagmi'
-import { chainIdAtom, connectorChainIdAtom } from '@/lib/states/evm'
 import { cn } from '@/lib/utils/shadcn'
 import { Button } from '@/ui/shadcn/button'
 import {
@@ -16,9 +15,9 @@ import {
 } from '@/ui/shadcn/dropdown-menu'
 
 export const SwitchChain: FC<ComponentProps<'div'>> = ({ className, ...props }) => {
-  const chainId = useAtomValue(chainIdAtom)
+  const chainId = useEvmStore(state => state.chainId)
 
-  const connectorChainId = useAtomValue(connectorChainIdAtom)
+  const connectorChainId = useEvmStore(state => state.connectorChainId)
 
   return (
     <div className={cn('inline-block', className)} {...props}>

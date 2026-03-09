@@ -2,13 +2,12 @@
 
 import type { FC, ReactNode } from 'react'
 import { RainbowKitProvider as Provider } from '@rainbow-me/rainbowkit'
-import { useAtomValue } from 'jotai'
 import { getAddress } from 'viem'
-import { chainIdAtom } from '@/lib/states/evm'
+import { useEvmStore } from '@/lib/common/web3/evm-store'
 import { AccountIcon } from '../shared/account-icon'
 
 export const RainbowKitProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const chainId = useAtomValue(chainIdAtom)
+  const chainId = useEvmStore(state => state.chainId)
 
   return (
     <Provider

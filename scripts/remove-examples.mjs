@@ -43,4 +43,5 @@ try {
   }
 }
 
+// biome-ignore lint/suspicious/noConsole: <ignore>
 console.log('Examples and related files removed.')
