@@ -1,11 +1,15 @@
 {
   "name": "@for-yeyu/evm-dapp-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Standard AI coding skills for the EVM DApp layered architecture.",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "postinstall": "node scripts/postinstall.mjs"
+  },
   "files": [
-    "skills/**"
+    "skills/**",
+    "scripts/postinstall.mjs"
   ],
   "keywords": [
     "skills",

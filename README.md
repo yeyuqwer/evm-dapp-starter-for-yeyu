@@ -5,16 +5,12 @@ Standard skills package for the EVM DApp layered architecture.
 ## Install
 
 ```bash
-npm i @for-yeyu/evm-dapp-skills
+npx skills add "https://github.com/for-yeyu/evm-dapp-starter-for-yeyu/tree/main/.agents/skills" -y
 ```
 
-## Use In Your Project
+After installation, skills are automatically synced to:
 
-Copy skills into your local agent skills directory:
-
-```bash
-rsync -a node_modules/@for-yeyu/evm-dapp-skills/skills/ .agents/skills/
-```
+- `<your project>/.agents/skills` 
 
 ## Included Skills
 
