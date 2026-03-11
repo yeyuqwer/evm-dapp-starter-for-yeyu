@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils/shadcn'
 import { Button } from '@/ui/shadcn/button'
 import { Input } from '@/ui/shadcn/input'
 
-export const Transfer: FC<ComponentProps<'div'>> = ({ className, ...props }) => {
+export const TransferPage: FC<ComponentProps<'div'>> = () => {
   const chainId = useEvmStore(state => state.chainId)
 
   const account = useEvmStore(state => state.connectorAccount)
@@ -73,10 +73,7 @@ export const Transfer: FC<ComponentProps<'div'>> = ({ className, ...props }) => 
   }, [chainId])
 
   return (
-    <div
-      className={cn('grid w-[40rem] grid-cols-[auto_1fr] items-center gap-4', className)}
-      {...props}
-    >
+    <div className={cn('grid w-160 grid-cols-[auto_1fr] items-center gap-4')}>
       <div>Account:</div>
       <div>{account}</div>
 

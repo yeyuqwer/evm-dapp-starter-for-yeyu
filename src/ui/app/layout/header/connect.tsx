@@ -7,8 +7,8 @@ import { useEvmStore } from '@/lib/common/web3/evm-store'
 import { wagmiConfig } from '@/lib/common/web3/wagmi'
 import { formatLongText } from '@/lib/utils/formatter/formatters'
 import { cn } from '@/lib/utils/shadcn'
+import { AccountIcon } from '@/ui/components/shared/account-icon'
 import { Button } from '@/ui/shadcn/button'
-import { AccountIcon } from '../components/shared/account-icon'
 
 export const Connect: FC<ComponentProps<'div'>> = ({ className, ...props }) => {
   const account = useEvmStore(state => state.connectorAccount)

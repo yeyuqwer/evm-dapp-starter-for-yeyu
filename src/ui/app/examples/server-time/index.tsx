@@ -4,8 +4,8 @@ import type { ComponentProps, FC } from 'react'
 import { useServerTime } from '@/hooks/time'
 import { formatTime } from '@/lib/utils/formatter/formatters'
 
-export const ServerTime: FC<ComponentProps<'div'>> = props => {
+export const ServerTimePage: FC<ComponentProps<'div'>> = () => {
   const { data: serverTime } = useServerTime()
 
-  return <div {...props}>Server time: {formatTime(serverTime)}</div>
+  return <div>Server time: {formatTime(serverTime)}</div>
 }

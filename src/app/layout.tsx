@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import '@/styles/index.css'
 import { appName } from '@/configs/shared/app'
 import { fontsClassName } from '@/styles/fonts'
-import { Header } from '@/ui/(home)/header'
+import { Header } from '@/ui/app/layout/header'
 import { Providers } from '@/ui/components/providers'
 
 export const metadata: Metadata = {

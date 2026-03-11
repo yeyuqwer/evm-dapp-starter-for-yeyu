@@ -1,9 +1,5 @@
-import { ServerTime } from '@/ui/examples/server-time'
+import { ServerTimePage } from '@/ui/app/examples/server-time'
 
 export default function Page() {
-  return (
-    <div className="container">
-      <ServerTime />
-    </div>
-  )
+  return <ServerTimePage />
 }

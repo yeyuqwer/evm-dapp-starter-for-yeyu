@@ -1,9 +1,5 @@
-import { Transfer } from '@/ui/examples/transfer'
+import { TransferPage } from '@/ui/app/examples/transfer'
 
 export default function Page() {
-  return (
-    <div className="container">
-      <Transfer />
-    </div>
-  )
+  return <TransferPage />
 }
