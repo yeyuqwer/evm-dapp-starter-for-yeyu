@@ -1,0 +1,23 @@
+{
+  "name": "@for-yeyu/evm-dapp-skills",
+  "version": "0.1.0",
+  "description": "Standard skills for EVM DApp layered architecture",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "files": [
+    "skills/**",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "skills",
+    "agents",
+    "ai",
+    "codex",
+    "evm",
+    "nextjs"
+  ]
+}
