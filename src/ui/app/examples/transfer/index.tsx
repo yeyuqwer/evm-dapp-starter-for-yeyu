@@ -6,7 +6,7 @@ import { skipToken } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { isAddress } from 'viem'
 import { chains } from '@/configs/shared/chains'
-import { useBalance, useDecimals, useSymbol, useTransfer } from '@/hooks/tokens'
+import { useBalance, useDecimals, useSymbol, useTokenTransfer } from '@/hooks/api/token'
 import { useEvmStore } from '@/lib/common/web3/evm-store'
 import { formatNumber } from '@/lib/utils/formatter/formatters'
 import { cn } from '@/lib/utils/shadcn'
@@ -52,7 +52,7 @@ export const TransferPage: FC<ComponentProps<'div'>> = () => {
 
   const [amount, setAmount] = useState('')
 
-  const { mutateAsync: mutationTransfer } = useTransfer()
+  const { mutateAsync: mutationTransfer } = useTokenTransfer()
 
   const transfer = async () => {
     if (
