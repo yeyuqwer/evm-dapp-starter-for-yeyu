@@ -55,3 +55,4 @@ Use this skill for any implementation, refactor, or review task in this reposito
 - `src/configs/README.md`
 - `src/lib/README.md`
 - `src/styles/README.md`
+- `references/MIGRATION_GUIDE.md` (Detailed migration playbook for humans and AI tools)
