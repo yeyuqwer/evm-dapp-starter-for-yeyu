@@ -1,6 +1,6 @@
 {
   "name": "@for-yeyu/evm-dapp-skills",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Standard AI coding skills for the EVM DApp layered architecture.",
   "license": "MIT",
   "private": false,
