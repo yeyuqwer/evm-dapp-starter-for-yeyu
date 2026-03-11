@@ -1,0 +1,21 @@
+{
+  "name": "@for-yeyu/evm-dapp-skills",
+  "version": "0.1.0",
+  "description": "Standard AI coding skills for the EVM DApp layered architecture.",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "skills/**"
+  ],
+  "keywords": [
+    "skills",
+    "agents",
+    "ai",
+    "codex",
+    "evm",
+    "nextjs"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
