@@ -15,13 +15,19 @@ Each domain follows:
 
 ```text
 src/api/<domain>/
-  mutation/
-  query/
   types/
+  query/      # optional
+  mutation/   # optional
   index.ts
 ```
 
-Use `index.ts` barrels at subfolder and domain level.
+Rules:
+
+1. `types/` is required.
+2. Create `query/` only when read/fetch functions exist.
+3. Create `mutation/` only when write/side-effect functions exist.
+4. Do not create empty folders or empty `index.ts` exports just to satisfy a template.
+5. Use `index.ts` barrels only for folders that actually exist.
 
 ## Hard Request Rules
 
@@ -43,14 +49,15 @@ Required chain:
 
 1. Add function under `query/` or `mutation/` by behavior.
 2. Add/update shared contracts under `types/`.
-3. Export through local and domain `index.ts`.
+3. Export through local and domain `index.ts` for existing folders only.
 4. Ensure transport helper choice is correct (`apiRequest` vs `httpRequest`).
 
 ## Review Checklist
 
 - Function is in correct `query` or `mutation` folder.
 - Shared contracts exist in `types`.
-- `index.ts` barrels are updated.
+- No empty `query/` or `mutation/` folders were added.
+- `index.ts` barrels are updated only for existing folders.
 - `apiRequest` is used for Next route handlers; `httpRequest` for others.
 - No direct client-side API requests are introduced.
 

@@ -16,7 +16,7 @@ Source of truth:
 src/
   app/        # Route entry layer (thin)
   ui/         # Page and component implementation layer
-  api/        # Request function layer (query/mutation/types)
+  api/        # Request function layer (types + query/mutation when needed)
   hooks/      # Client-only calling layer (React Query)
   configs/    # Config layer (schema/shared/server)
   lib/        # Infrastructure layer (errors/http/runtime/web3/utils)
@@ -77,14 +77,18 @@ For an old page `legacy/<feature>`, always use this order:
 - Use kebab-case for child files (for example `filter-panel.tsx`)
 
 3. Request function migration (`src/api`)
-- Create `src/api/<domain>/{query,mutation,types}/`
+- Create `src/api/<domain>/types/` first
+- Create `query/` only when read/fetch functions exist
+- Create `mutation/` only when write/side-effect functions exist
 - Move request logic out of page/service into `query` or `mutation`
+- Do not create empty folders or empty barrel exports
 - Use `@/lib/http/ky` only:
   - `apiRequest` for Next route handlers
   - `httpRequest` for external endpoints
 
 4. Hook wrapper migration (`src/hooks/api`)
-- Create `src/hooks/api/<domain>/{query,mutation,types}/`
+- Mirror `src/api/<domain>`: create only the needed `query/` or `mutation/` folders
+- Keep `index.ts` exports only for folders that exist
 - Wrap `src/api` with React Query:
   - `useQuery` for reads
   - `useMutation` for writes
@@ -170,7 +174,7 @@ rg -n "@/configs/server/" src/ui src/hooks src/app
 A migrated business slice is complete only if all conditions are met:
 
 1. Route layer is thin and UI is in `src/ui/app`.
-2. Request functions are in `src/api` and organized by `query/mutation/types`.
+2. Request functions are in `src/api` and organized by `types` + needed `query/mutation` folders.
 3. Pages use `src/hooks`; no direct client requests exist.
 4. Config is split by `schema/shared/server` with correct boundaries.
 5. No unnecessary infra-core changes in `src/lib`.
@@ -187,8 +191,8 @@ A migrated business slice is complete only if all conditions are met:
 2. Failure: page directly uses `fetch`/`ky`
 - Fix: move request to `src/api`, then expose via `src/hooks`.
 
-3. Failure: `src/api` not split by `query/mutation/types`
-- Fix: reorganize by domain and add barrel exports (`index.ts`).
+3. Failure: `src/api` structure does not match actual behavior (missing needed folder or extra empty folder)
+- Fix: keep `types` required, add only needed `query`/`mutation`, and update barrel exports for existing folders only.
 
 4. Failure: secret config placed in `shared`
 - Fix: move to `src/configs/server` and add `server-only`.

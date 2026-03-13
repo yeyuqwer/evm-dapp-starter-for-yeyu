@@ -38,6 +38,12 @@ Use this skill for any implementation, refactor, or review task in this reposito
 4. Run checks relevant to the change (`pnpm lint`, `pnpm typecheck`, tests when needed).
 5. Verify no layer boundary violations are introduced.
 
+## Global TypeScript And Lint Rules
+
+1. Use `type` for type definitions; do not introduce `interface`.
+2. If a type is not exported/reused, keep it inline instead of creating a named type alias.
+3. Lint is based on Biome. Treat `pnpm lint` as the Biome check entry.
+
 ## Definition Of Done
 
 - Layer boundaries are preserved.
