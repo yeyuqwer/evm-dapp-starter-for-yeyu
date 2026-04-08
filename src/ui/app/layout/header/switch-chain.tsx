@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from 'react'
 import { switchChain } from '@wagmi/core'
-import { chains, supportedChainIds } from '@/configs/shared/chains'
+import { sharedConfig } from '@/configs/shared'
 import { useEvmStore } from '@/lib/common/web3/evm-store'
 import { wagmiConfig } from '@/lib/common/web3/wagmi'
 import { cn } from '@/lib/utils/shadcn'
@@ -26,13 +26,13 @@ export const SwitchChain: FC<ComponentProps<'div'>> = ({ className, ...props }) 
           {connectorChainId != null && connectorChainId !== chainId ? (
             <Button variant="destructive">Wrong network</Button>
           ) : (
-            <Button variant="outline">{chains[chainId].name}</Button>
+            <Button variant="outline">{sharedConfig.chains[chainId].name}</Button>
           )}
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
-          {supportedChainIds.map(chainId => (
+          {sharedConfig.supportedChainIds.map(chainId => (
             <DropdownMenuItem key={chainId} onClick={() => switchChain(wagmiConfig, { chainId })}>
-              {chains[chainId].name}
+              {sharedConfig.chains[chainId].name}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>

@@ -1,10 +1,10 @@
 import type { GetConnectionReturnType } from '@wagmi/core'
 import { useStore } from 'zustand'
 import { createStore } from 'zustand/vanilla'
-import { type ChainId, supportedChainIds } from '@/configs/shared/chains'
+import { type SharedChainId, sharedConfig } from '@/configs/shared'
 
 type EvmState = {
-  chainId: ChainId
+  chainId: SharedChainId
   connectorChainId: number | undefined
   connectorAccount: GetConnectionReturnType['address']
 }
@@ -16,10 +16,12 @@ type EvmActions = {
 
 type EvmStoreState = EvmState & EvmActions
 
-const defaultChainId = supportedChainIds[0]
+const defaultChainId = sharedConfig.supportedChainIds[0]
 
-const toSupportedChainId = (chainId: number): ChainId =>
-  supportedChainIds.includes(chainId as ChainId) ? (chainId as ChainId) : defaultChainId
+const toSupportedChainId = (chainId: number): SharedChainId =>
+  sharedConfig.supportedChainIds.includes(chainId as SharedChainId)
+    ? (chainId as SharedChainId)
+    : defaultChainId
 
 export const evmStore = createStore<EvmStoreState>()(set => ({
   chainId: defaultChainId,

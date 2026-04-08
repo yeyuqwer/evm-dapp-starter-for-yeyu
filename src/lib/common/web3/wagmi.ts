@@ -7,18 +7,23 @@ import {
   BaseError as ViemBaseError,
   UserRejectedRequestError as ViemUserRejectedRequestError,
 } from 'viem'
-import { appName, walletConnectProjectId } from '@/configs/shared/app'
-import { chains, supportedChainIds } from '@/configs/shared/chains'
+import { sharedConfig } from '@/configs/shared'
 import { UnknownEvmError, UserRejectedRequestError } from '../errors/evm'
 
 export const wagmiConfig = createConfig({
-  chains: supportedChainIds.map(chainId => chains[chainId]) as [Chain, ...Chain[]],
+  chains: sharedConfig.supportedChainIds.map(chainId => sharedConfig.chains[chainId]) as [
+    Chain,
+    ...Chain[],
+  ],
   client: ({ chain }) => {
     return createClient({ chain, transport: http() })
   },
   connectors:
     typeof window !== 'undefined'
-      ? getDefaultWallets({ appName, projectId: walletConnectProjectId }).connectors
+      ? getDefaultWallets({
+          appName: sharedConfig.appName,
+          projectId: sharedConfig.walletConnectProjectId,
+        }).connectors
       : undefined,
 })
 
